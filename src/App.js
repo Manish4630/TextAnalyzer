@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Navbar from './Component/Navbar';
+import InputForm from './Component/InputForm';
+import About from './Component/About';
+import Alert from './Component/Alert';
+import { useState } from 'react';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const [alert, setAlert] = useState(null)
+const showAlert = (message , type) => {
+  setAlert({
+    message : message,
+    type : type
+  })
+  setTimeout(
+    () => setAlert(null), 
+    2000
   );
+}
+  return (
+<div>
+  <Navbar/>
+  <Alert alert = {alert}/>
+  <InputForm Text = "Enter the text to analyze"  showAlert= {showAlert}/>
+  <About/>  
+  
+</div>
+  )
 }
 
 export default App;
