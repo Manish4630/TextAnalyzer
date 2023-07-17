@@ -11,6 +11,10 @@ export default function InputForm (props) {
         setText(text.toLowerCase())
         props.showAlert("Lowercase converted", "success")
      }
+    const handleCopy = () => {
+        navigator.clipboard.writeText(text); 
+        props.showAlert("Copied to Clipboard!", "success");
+    }
     const updatetext = (event)=>{
         setText(event.target.value)
     }
@@ -22,6 +26,8 @@ export default function InputForm (props) {
             </div>
             <button className="btn btn-primary mx-2 p-t-20" onClick={UpperCaseConverter}>Convert to UpperCase</button>  
             &nbsp;<button className="btn btn-primary mx-2" onClick={LowerCaseConverter}>Convert to LowerCase</button>  
+            &nbsp;<button className="btn btn-primary mx-2" onClick={handleCopy}>Copy All Text</button>  
+       
         <div className="my-6">
             <h3>Text Summary</h3>
             <p>
